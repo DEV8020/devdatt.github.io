@@ -8,7 +8,7 @@ import Contact from "./components/Contact";
 
 export default function App() {
   return (
-    <div className="font-sans bg-white">
+    <div className="font-sans bg-white dark:bg-gray-900">
       <Navbar />
       <Hero />
       <About />
