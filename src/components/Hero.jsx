@@ -1,84 +1,154 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import profile from "../assets/profile.jpg";
+import TypingSequence from "./TypingSequence";
 
 export default function Hero() {
-  return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 
-      bg-gradient-to-br from-blue-50 via-white to-blue-100 
-      dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-950 dark:to-black">
+  const [phase, setPhase] = useState("typing");  // FIXED
 
-      {/* Profile Image */}
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="mb-6"
-      >
-        <img
-          src={profile}
-          alt="Devdatt Profile"
-          className="w-40 h-40 object-cover rounded-full shadow-xl ring-4 ring-blue-500/30 dark:ring-blue-400/40"
-        />
-      </motion.div>
+  useEffect(() => {
+    if (phase === "divider") {
+      const t = setTimeout(() => setPhase("layout"), 1000);
+      return () => clearTimeout(t);
+    }
+  }, [phase]);
 
-      {/* Name */}
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-5xl font-extrabold mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 
-        dark:from-blue-400 dark:to-cyan-300 bg-clip-text text-transparent"
-      >
+  const TextBlock = ({ align = "center" }) => (
+    <div className={`space-y-2 ${align === "center" ? "text-center" : "text-right"}`}>
+      <p className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
         Hi, I'm Devdatt Datar
-      </motion.h1>
-
-      {/* Role */}
-      <motion.h2
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        className="text-2xl font-semibold text-gray-700 dark:text-gray-300"
-      >
+      </p>
+      <p className="text-xl md:text-2xl font-semibold text-gray-300">
         Full-Stack Developer • Cloud Data Engineer
-      </motion.h2>
+      </p>
+      <p className={`text-lg md:text-xl text-gray-400 leading-relaxed ${align === "right" ? "" : "max-w-lg mx-auto"}`}>
+        I build secure, scalable, high-performance applications.
+      </p>
+    </div>
+  );
 
-      {/* Summary */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        className="mt-4 max-w-2xl text-gray-600 dark:text-gray-400 leading-relaxed"
-      >
-        I build scalable, secure, and high-performance applications across mobile, web, 
-        and cloud platforms. Passionate about modern development, Cloud Architecture, 
-        and crafting seamless user experiences.
-      </motion.p>
+  return (
+    <section
+      className="
+        min-h-screen flex items-center justify-center 
+        px-6 md:px-24 
+        bg-gradient-to-br from-blue-50 via-white to-blue-100
+        dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-950 dark:to-black
+      "
+    >
 
-      {/* Buttons */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8 }}
-        className="mt-8 flex gap-4"
-      >
-        <a
-          href="#projects"
-          className="px-6 py-3 rounded-lg text-white font-semibold 
-          bg-gradient-to-r from-blue-600 to-indigo-600 
-          hover:shadow-lg hover:scale-105 transition transform shadow-md"
-        >
-          View Projects
-        </a>
+      {/* TYPING PHASE */}
+      {phase === "typing" && (
+        <div className="max-w-4xl w-full flex justify-center">
+          <TypingSequence
+            speed={20}
+            onComplete={() => setPhase("divider")}
+            lines={[
+              {
+                text: "Hi, I'm Devdatt Datar",
+                className:
+                  "text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent",
+              },
+              {
+                text: "Full-Stack Developer • Cloud Data Engineer",
+                className: "text-xl md:text-2xl font-semibold text-gray-300",
+              },
+              {
+                text: "I build secure, scalable, high-performance applications.",
+                className: "text-lg md:text-xl text-gray-400 leading-relaxed",
+              },
+            ]}
+          />
+        </div>
+      )}
 
-        <a
-          href="#contact"
-          className="px-6 py-3 rounded-lg border-2 border-blue-600 text-blue-600 
-          dark:border-blue-400 dark:text-blue-300
-          hover:bg-blue-50 dark:hover:bg-gray-800
-          transition shadow-sm hover:shadow-md hover:scale-105"
-        >
-          Contact Me
-        </a>
-      </motion.div>
+      {/* DIVIDER APPEARING PHASE */}
+      {phase === "divider" && (
+        <div className="flex justify-center items-center">
+          <TextBlock align="center" />
+          <motion.div
+            initial={{ scaleY: 0, opacity: 0, x: -8 }}
+            animate={{ scaleY: 1, opacity: 1, x: 20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="hidden md:block origin-top"
+          >
+            <div className="w-[3px] h-40 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full" />
+          </motion.div>
+        </div>
+      )}
+
+      {/* FINAL SLIDE + IMAGE PHASE */}
+      {phase === "layout" && (
+        <div className="max-w-6xl w-4/6 flex items-center justify-between gap-8">
+
+          <motion.div
+            initial={{ x: 0, opacity: 1, transformOrigin: "50% 50%" }}
+            animate={{ x: -20, transformOrigin: "100% 50%" }}
+            transition={{ duration: 6, ease: "easeOut" }}
+            className="flex items-center"
+          >
+            <motion.div
+              initial={{ x: 0, textAlign: "center" }}
+              animate={{ x: -40, textAlign: "right" }}
+              transition={{ duration: 10, ease: "easeOut" }}
+              className="space-y-2 w-fit"
+            >
+              <p className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+               Hi, I'm Devdatt Datar
+              </p>
+              <p className="text-xl md:text-2xl font-semibold text-gray-300">
+                Full-Stack Developer • Cloud Data Engineer
+              </p>
+              <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
+                I build secure, scalable, high-performance applications.
+              </p>
+            </motion.div>
+
+            {/* Divider touching text */}
+            <motion.div
+              initial={{ x: 0, textAlign: "center" }}
+              animate={{ x: -20, textAlign: "right" }}
+              transition={{ duration: 3, ease: "easeOut" }}
+              className="hidden md:flex">
+              <div className="w-[3px] h-60 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full ml-4" />
+            </motion.div>
+          </motion.div>
+
+
+          <motion.div
+            initial={{ opacity: 0, x: 160, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 5, ease: "easeOut" }}
+            className="hidden md:block"
+          >
+            <ProfileCard img={profile} />
+          </motion.div>
+        </div>
+      )}
     </section>
+  );
+}
+
+/* FIXED — no TypeScript */
+function ProfileCard({ img }) {
+  return (
+    <div
+      className="
+        relative 
+        w-60 h-60 sm:w-72 sm:h-72 
+        rounded-3xl overflow-hidden shadow-2xl
+        bg-white dark:bg-gray-900 
+        border border-gray-300 dark:border-gray-700
+      "
+    >
+      <span className="absolute top-0 left-0 w-10 h-10 border-t-4 border-l-4 border-blue-500 rounded-tl-xl"></span>
+      <span className="absolute bottom-0 right-0 w-10 h-10 border-b-4 border-r-4 border-indigo-500 rounded-br-xl"></span>
+
+      <img
+        src={img}
+        className="w-full h-full object-cover rounded-3xl"
+        alt="profile"
+      />
+    </div>
   );
 }

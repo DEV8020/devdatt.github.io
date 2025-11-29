@@ -1,0 +1,74 @@
+<svg width="900" height="700" viewBox="0 0 900 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Soft Gradient Background (Light mode) -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="900" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DCEAFE" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Dark Mode Gradient -->
+    <linearGradient id="bgGradientDark" x1="0" y1="0" x2="900" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1120" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Accent Glow -->
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop stop-color="#60A5FA" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#3B82F6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Light Mode BG -->
+  <rect width="900" height="700" fill="url(#bgGradient)" class="light"/>
+
+  <!-- Dark Mode BG -->
+  <rect width="900" height="700" fill="url(#bgGradientDark)" class="dark"/>
+
+  <!-- Accent Glow Circle -->
+  <circle cx="700" cy="200" r="250" fill="url(#glow)" />
+
+  <!-- Geometric Coding Shapes -->
+  <g stroke="#60A5FA" stroke-width="2" stroke-opacity="0.4">
+    
+    <!-- Curly braces -->
+    <path d="M750 150 C730 150 730 180 750 180 C730 180 730 210 750 210" fill="none"/>
+    <path d="M820 150 C840 150 840 180 820 180 C840 180 840 210 820 210" fill="none"/>
+
+    <!-- Arrow function -->
+    <path d="M720 260 L770 260" stroke-linecap="round"/>
+    <path d="M770 260 L755 245" stroke-linecap="round"/>
+    <path d="M770 260 L755 275" stroke-linecap="round"/>
+
+    <circle cx="780" cy="350" r="25" fill="none"/>
+    <circle cx="830" cy="350" r="25" fill="none"/>
+
+    <!-- Code brackets -->
+    <path d="M700 440 L730 410" stroke-linecap="round"/>
+    <path d="M700 440 L730 470" stroke-linecap="round"/>
+    <path d="M860 440 L830 410" stroke-linecap="round"/>
+    <path d="M860 440 L830 470" stroke-linecap="round"/>
+
+    <!-- Small nodes -->
+    <circle cx="760" cy="500" r="6" fill="#60A5FA" fill-opacity="0.5"/>
+    <circle cx="805" cy="540" r="6" fill="#60A5FA" fill-opacity="0.5"/>
+    <circle cx="845" cy="510" r="6" fill="#60A5FA" fill-opacity="0.5"/>
+  </g>
+
+  <!-- Grid Lines -->
+  <g stroke="#3B82F6" stroke-opacity="0.08" stroke-width="1">
+    <line x1="0" y1="100" x2="900" y2="100"/>
+    <line x1="0" y1="200" x2="900" y2="200"/>
+    <line x1="0" y1="300" x2="900" y2="300"/>
+    <line x1="0" y1="400" x2="900" y2="400"/>
+    <line x1="0" y1="500" x2="900" y2="500"/>
+    <line x1="0" y1="600" x2="900" y2="600"/>
+  </g>
+
+  <!-- Decorative Floating Rectangles -->
+  <rect x="720" y="100" width="80" height="12" rx="6" fill="#3B82F6" fill-opacity="0.25"/>
+  <rect x="740" y="480" width="100" height="12" rx="6" fill="#60A5FA" fill-opacity="0.25"/>
+  <rect x="760" y="300" width="60" height="12" rx="6" fill="#2563EB" fill-opacity="0.25"/>
+
+</svg>
