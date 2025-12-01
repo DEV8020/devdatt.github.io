@@ -23,28 +23,41 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-16 px-4 bg-gray-50 dark:bg-[#050505]"
+      className="py-20 px-6 bg-gradient-to-br from-blue-50 via-white to-blue-100
+      dark:bg-gradient-to-br dark:to-black dark:via-gray-950 dark:from-gray-900 "
     >
       <div className="max-w-5xl mx-auto">
+
+        {/* Section Label */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex items-center justify-between mb-8"
+          className="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-gray-800 
+                     px-3 py-1 text-xs text-gray-500 dark:text-gray-400 mb-4"
         >
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-gray-800 
-                           px-3 py-1 text-xs text-gray-500 dark:text-gray-400 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              <span>Skills</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight dark:text-gray-100">
-              Tools I work with every day.
-            </h2>
-          </div>
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+          <span>Skills</span>
         </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="
+            text-3xl md:text-4xl font-bold mb-10 
+    bg-gradient-to-r from-blue-600 to-indigo-600 
+    bg-clip-text text-transparent 
+    dark:from-blue-400 dark:to-indigo-300
+    leading-snug md:leading-relaxed
+          "
+        >
+          Tools & technologies I work with every day.
+        </motion.h2>
+
+        {/* Skill Cards Grid */}
+        <div className="grid gap-8 sm:grid-cols-2">
           {skillGroups.map((group, idx) => (
             <motion.div
               key={group.title}
@@ -52,26 +65,42 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="border border-gray-200 dark:border-gray-800 rounded-xl p-4 sm:p-5 
-                         bg-white/70 dark:bg-black/40"
+              className="
+                p-6 rounded-2xl
+                bg-white/60 dark:bg-white/5 
+                backdrop-blur-md
+                border border-gray-200/60 dark:border-gray-800/60
+                shadow-sm
+              "
             >
-              <h3 className="text-sm font-semibold mb-3 text-gray-900 dark:text-gray-100">
+              <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-100 mb-4 uppercase tracking-wide">
                 {group.title}
               </h3>
+
               <div className="flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <span
+                {group.items.map((item, i) => (
+                  <motion.span
                     key={item}
-                    className="text-xs px-2.5 py-1 rounded-full border border-gray-200 dark:border-gray-700 
-                               text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    className="
+                      text-xs px-3 py-1.5 rounded-full
+                      bg-gray-100 dark:bg-gray-900
+                      border border-gray-300 dark:border-gray-700
+                      text-gray-700 dark:text-gray-300
+                      shadow-sm
+                    "
                   >
                     {item}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

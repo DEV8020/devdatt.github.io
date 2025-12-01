@@ -28,56 +28,102 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-16 px-4 bg-white dark:bg-black">
+    <section
+      id="experience"
+      className="py-20 px-6 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-950"
+    >
       <div className="max-w-4xl mx-auto">
+
+        {/* Section Label */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex items-center justify-between mb-8"
+          className="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-gray-800 
+                     px-3 py-1 text-xs text-gray-500 dark:text-gray-400 mb-4"
         >
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-gray-800 
-                           px-3 py-1 text-xs text-gray-500 dark:text-gray-400 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              <span>Experience</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight dark:text-gray-100">
-              Where I’ve been recently.
-            </h2>
-          </div>
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+          <span>Experience</span>
         </motion.div>
 
-        <div className="relative border-l border-gray-200 dark:border-gray-800 ml-2">
+        {/* Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="
+            text-3xl sm:text-4xl font-bold mb-16
+            bg-gradient-to-r from-blue-600 to-indigo-600 
+            bg-clip-text text-transparent 
+            dark:from-blue-400 dark:to-indigo-300
+          "
+        >
+          Where I’ve been recently.
+        </motion.h2>
+
+        {/* Vertical Timeline */}
+        <div className="relative border-l border-gray-300/60 dark:border-gray-800 ml-4">
+
           {experiences.map((exp, idx) => (
             <motion.div
               key={exp.role}
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="relative pl-6 pb-10"
+              transition={{ duration: 0.4, delay: idx * 0.1 }}
+              className="relative pl-8 pb-14"
             >
-              <span className="absolute -left-[6px] top-1 w-3 h-3 rounded-full bg-emerald-500" />
-              <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
-                {exp.role}
-              </h3>
-              <div className="text-xs text-gray-500 dark:text-gray-400">
-                {exp.company} • {exp.location}
-              </div>
-              <div className="text-xs text-gray-500 dark:text-gray-400 mb-3">
-                {exp.period}
-              </div>
-              <ul className="space-y-1.5 text-sm text-gray-600 dark:text-gray-300">
-                {exp.bullets.map((b) => (
-                  <li key={b} className="flex gap-2">
-                    <span className="mt-1 h-[3px] w-[3px] rounded-full bg-gray-400 dark:bg-gray-500" />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
+              {/* Glowing Timeline Dot */}
+              <motion.span
+                initial={{ scale: 0.7, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                className="
+                  absolute -left-[10px] top-1
+                  w-4 h-4 rounded-full 
+                  bg-gradient-to-r from-blue-500 to-indigo-500
+                  shadow-[0_0_12px_rgba(99,102,241,0.5)]
+                "
+              />
+
+              {/* Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="
+                  p-6 rounded-xl
+                  bg-white/60 dark:bg-white/5 
+                  backdrop-blur-md
+                  border border-gray-200/60 dark:border-gray-800/60
+                  shadow-sm
+                "
+              >
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  {exp.role}
+                </h3>
+
+                <div className="text-xs text-gray-500 dark:text-gray-400">
+                  {exp.company} • {exp.location}
+                </div>
+
+                <div className="text-xs text-gray-500 dark:text-gray-400 mb-4">
+                  {exp.period}
+                </div>
+
+                {/* Bullet List */}
+                <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                  {exp.bullets.map((b, i) => (
+                    <li key={i} className="flex gap-3 leading-relaxed">
+                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500/70" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
             </motion.div>
           ))}
+
         </div>
       </div>
     </section>
