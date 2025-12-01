@@ -31,10 +31,11 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="
-            text-3xl sm:text-4xl font-bold text-center mb-6
-            bg-gradient-to-r from-blue-600 to-indigo-600 
-            bg-clip-text text-transparent
-            dark:from-blue-400 dark:to-indigo-300
+            text-3xl md:text-4xl font-bold mb-10 
+    bg-gradient-to-r from-blue-600 to-indigo-600 
+    bg-clip-text text-transparent 
+    dark:from-blue-400 dark:to-indigo-300
+    leading-snug md:leading-relaxed
           "
         >
           Let’s work on something meaningful.

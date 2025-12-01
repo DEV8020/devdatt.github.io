@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect} from "react";
 
 export default function TypingSequence({ lines, speed = 20, onComplete, cursorRef }) {
   const [currentLine, setCurrentLine] = useState(0);
@@ -25,7 +25,7 @@ export default function TypingSequence({ lines, speed = 20, onComplete, cursorRe
     }, speed);
 
     return () => clearInterval(interval);
-  }, [currentLine]);
+  }, [currentLine,onComplete, lines, speed]);
 
   return (
     <div className="text-center space-y-2">
