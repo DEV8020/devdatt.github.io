@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.93ddaf7c.css",
-    "main.js": "/static/js/main.3e0d8919.js",
-    "static/media/profile.jpg": "/static/media/profile.dbc0351eda1867623030.jpg",
-    "index.html": "/index.html",
-    "main.93ddaf7c.css.map": "/static/css/main.93ddaf7c.css.map",
-    "main.3e0d8919.js.map": "/static/js/main.3e0d8919.js.map"
+    "main.css": "/devdatt.github.io/static/css/main.93ddaf7c.css",
+    "main.js": "/devdatt.github.io/static/js/main.b0ddb681.js",
+    "static/media/profile.jpg": "/devdatt.github.io/static/media/profile.dbc0351eda1867623030.jpg",
+    "index.html": "/devdatt.github.io/index.html",
+    "main.93ddaf7c.css.map": "/devdatt.github.io/static/css/main.93ddaf7c.css.map",
+    "main.b0ddb681.js.map": "/devdatt.github.io/static/js/main.b0ddb681.js.map"
   },
   "entrypoints": [
     "static/css/main.93ddaf7c.css",
-    "static/js/main.3e0d8919.js"
+    "static/js/main.b0ddb681.js"
   ]
 }
